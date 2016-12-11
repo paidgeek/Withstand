@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(RigidbodyCharacterController))]
+[RequireComponent(typeof (RigidbodyCharacterController))]
 public class PlayerInput : MonoBehaviour
 {
   private RigidbodyCharacterController m_GravityCharacterController;
-  private WeaponController m_WeaponController;
+  [SerializeField] private LaserGun m_LaserGun;
   private Vector2 m_InputDirection;
-  [SerializeField]
-  private Transform m_View;
+  [SerializeField] private Transform m_View;
 
   private void Start()
   {
     m_GravityCharacterController = GetComponent<RigidbodyCharacterController>();
-    m_WeaponController = WeaponController.instance;
   }
 
   private void Update()
@@ -21,8 +19,17 @@ public class PlayerInput : MonoBehaviour
       m_GravityCharacterController.Jump();
     }
 
-    if (Input.GetButtonDown("Fire")) {
-      m_WeaponController.Fire();
+#if !UNITY_EDITOR
+     if (Input.GetKeyDown(KeyCode.Escape)) {
+      GetComponent<Player>().Die();
+      return;
+    }
+#endif
+
+    if (Input.GetButton("Fire")) {
+      m_LaserGun.Fire();
+    } else {
+      m_LaserGun.EndFire();
     }
   }
 

@@ -4,9 +4,9 @@
 public class Gravity : MonoBehaviour
 {
   [SerializeField] private float m_Multiplier;
-  private Rigidbody m_RigidBody;
   private Vector3 m_LastSwitchPosition;
   public Vector3 direction { get; private set; }
+  public float altitude { get; private set; }
 
   public float multiplier
   {
@@ -22,7 +22,7 @@ public class Gravity : MonoBehaviour
 
   private void Start()
   {
-    m_RigidBody = GetComponent<Rigidbody>();
+    m_LastSwitchPosition = Vector3.one * 1000.0f;
   }
 
   private void Update()
@@ -35,10 +35,13 @@ public class Gravity : MonoBehaviour
 
       if (ap.x > ap.y && ap.x > ap.z) {
         d = p.x < 0.0f ? Vector3.left : Vector3.right;
+        altitude = 16.0f - ap.x;
       } else if (ap.y > ap.z) {
         d = p.y < 0.0f ? Vector3.down : Vector3.up;
+        altitude = 16.0f - ap.y;
       } else {
         d = p.z < 0.0f ? Vector3.back : Vector3.forward;
+        altitude = 16.0f - ap.z;
       }
 
       if (direction != d) {
@@ -47,10 +50,5 @@ public class Gravity : MonoBehaviour
 
       direction = d;
     }
-  }
-
-  private void FixedUpdate()
-  {
-    m_RigidBody.AddForce(direction * m_Multiplier * Time.fixedDeltaTime, ForceMode.VelocityChange);
   }
 }

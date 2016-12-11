@@ -19,7 +19,7 @@ public class RigidbodyCharacterController : MonoBehaviour
   [SerializeField] private float m_JumpPower;
   private bool m_PreviouslyGrounded;
   private Gravity m_Gravity;
-  private Rigidbody m_RigidBody;
+  private Rigidbody m_Rigidbody;
   public AnimationCurve m_SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
   [Header("Properties")] [SerializeField] private float m_Speed;
   private Quaternion m_TargetRotation;
@@ -30,13 +30,13 @@ public class RigidbodyCharacterController : MonoBehaviour
   {
     get
     {
-      return m_RigidBody.velocity;
+      return m_Rigidbody.velocity;
     }
   }
 
   private void Awake()
   {
-    m_RigidBody = GetComponent<Rigidbody>();
+    m_Rigidbody = GetComponent<Rigidbody>();
     m_CapsuleCollider = GetComponent<CapsuleCollider>();
     m_Gravity = GetComponent<Gravity>();
   }
@@ -74,25 +74,25 @@ public class RigidbodyCharacterController : MonoBehaviour
       desiredMove.z = desiredMove.z * m_CurrentTargetSpeed;
       desiredMove.y = desiredMove.y * m_CurrentTargetSpeed;
 
-      if (m_RigidBody.velocity.sqrMagnitude < m_CurrentTargetSpeed * m_CurrentTargetSpeed) {
-        m_RigidBody.AddForce(desiredMove * SlopeMultiplier(), ForceMode.Impulse);
+      if (m_Rigidbody.velocity.sqrMagnitude < m_CurrentTargetSpeed * m_CurrentTargetSpeed) {
+        m_Rigidbody.AddForce(desiredMove * SlopeMultiplier(), ForceMode.Impulse);
       }
     }
 
     if (grounded) {
-      m_RigidBody.drag = 5.0f;
+      m_Rigidbody.drag = 5.0f;
 
       if (m_Jump) {
-        m_RigidBody.drag = 0.0f;
-        m_RigidBody.AddForce(-m_Gravity.direction * m_JumpPower * 50.0f, ForceMode.Impulse);
+        m_Rigidbody.drag = 0.0f;
+        m_Rigidbody.AddForce(-m_Gravity.direction * m_JumpPower * 50.0f, ForceMode.Impulse);
         m_Jumping = true;
       }
 
-      if (!m_Jumping && Mathf.Abs(m_InputDirection.x) < float.Epsilon && Mathf.Abs(m_InputDirection.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1.0f) {
-        m_RigidBody.Sleep();
+      if (!m_Jumping && Mathf.Abs(m_InputDirection.x) < float.Epsilon && Mathf.Abs(m_InputDirection.y) < float.Epsilon && m_Rigidbody.velocity.magnitude < 1.0f) {
+        m_Rigidbody.Sleep();
       }
     } else {
-      m_RigidBody.drag = 0.0f;
+      m_Rigidbody.drag = 0.0f;
 
       if (m_PreviouslyGrounded && !m_Jumping) {
         StickToGroundHelper();
@@ -115,7 +115,7 @@ public class RigidbodyCharacterController : MonoBehaviour
     RaycastHit hitInfo;
     if (Physics.SphereCast(transform.position, m_CapsuleCollider.radius * (1.0f - s_ShellOffset), m_Gravity.direction, out hitInfo, ((m_CapsuleCollider.height / 2f) - m_CapsuleCollider.radius) + s_StickToGroundHelperDistance, ~0, QueryTriggerInteraction.Ignore)) {
       if (Mathf.Abs(Vector3.Angle(hitInfo.normal, Vector3.up)) < 85f) {
-        m_RigidBody.velocity = Vector3.ProjectOnPlane(m_RigidBody.velocity, hitInfo.normal);
+        m_Rigidbody.velocity = Vector3.ProjectOnPlane(m_Rigidbody.velocity, hitInfo.normal);
       }
     }
   }
