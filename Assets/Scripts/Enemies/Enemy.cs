@@ -4,10 +4,12 @@ public abstract class Enemy : MonoBehaviour
 {
   [SerializeField] private Renderer[] m_Renderers;
   [SerializeField] protected Transform m_DeathEffect;
+  [SerializeField] private AudioSource m_HurtAudioSource;
   private float m_HurtTimer;
 
   protected void Hurt()
   {
+    m_HurtAudioSource.Play();
     m_HurtTimer = 0.15f;
   }
 

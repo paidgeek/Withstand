@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4340866626493506}
   - component: {fileID: 114608847773239084}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,8 @@ GameObject:
   - component: {fileID: 54131408372806074}
   - component: {fileID: 114608692101924802}
   - component: {fileID: 114508579336717036}
-  m_Layer: 0
+  - component: {fileID: 82640527631394698}
+  m_Layer: 9
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +59,8 @@ GameObject:
   - component: {fileID: 135802964833388722}
   - component: {fileID: 23390702615435082}
   - component: {fileID: 114206455035350558}
-  m_Layer: 0
+  - component: {fileID: 82473426080762158}
+  m_Layer: 9
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +76,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4894183934870584}
   - component: {fileID: 108923915186213154}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +93,7 @@ GameObject:
   - component: {fileID: 4750386287747884}
   - component: {fileID: 33268003731024754}
   - component: {fileID: 23087651092655914}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +110,7 @@ GameObject:
   - component: {fileID: 4935808163488322}
   - component: {fileID: 33821137366788900}
   - component: {fileID: 23663113571588312}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torus0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +125,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4804427492310460}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,6 +358,166 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!82 &82473426080762158
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130971751268662}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2c055e7f8801f0048aa2a3069a1860d9, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82640527631394698
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065703341363024}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8cad79b87a2964b47bc104f4fb949241, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!108 &108923915186213154
 Light:
   m_ObjectHideFlags: 1
@@ -404,6 +566,7 @@ MonoBehaviour:
   m_Muzzle: {fileID: 114608847773239084}
   m_CannonBallPrefab: {fileID: 114030721766152292, guid: e357f62759d81f44e87306bea6a449a5,
     type: 2}
+  m_FireAudioSource: {fileID: 82473426080762158}
 --- !u!114 &114508579336717036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,6 +584,7 @@ MonoBehaviour:
   - {fileID: 23390702615435082}
   m_DeathEffect: {fileID: 4124360955428470, guid: cafa31446f9448c4f80c8c235da01eb0,
     type: 2}
+  m_HurtAudioSource: {fileID: 82640527631394698}
   m_HoverHeight: 2
   m_HoverForce: 5
   m_Gun: {fileID: 114206455035350558}

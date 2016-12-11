@@ -55,4 +55,9 @@ public class MenuController : Singleton<MenuController>
   {
     SceneManager.LoadScene("Game");
   }
+
+  public void OnQuitClick()
+  {
+    Application.Quit();
+  }
 }

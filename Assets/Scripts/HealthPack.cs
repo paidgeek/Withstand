@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class HealthPack : Loot
+﻿public class HealthPack : Loot
 {
   protected override void OnPickup()
   {

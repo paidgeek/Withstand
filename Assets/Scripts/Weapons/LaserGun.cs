@@ -6,6 +6,8 @@ public class LaserGun : Weapon
   [SerializeField] private LayerMask m_HitLayer;
   [SerializeField] private LaserGunImpact m_ImpactPrefab;
   [SerializeField] private LineRenderer m_LineRenderer;
+  [SerializeField]
+  private AudioSource m_ShootAudioSource;
   private float m_Timer;
 
   private void Start()
@@ -20,7 +22,7 @@ public class LaserGun : Weapon
       m_Timer = 0.15f;
 
       var origin = m_Muzzle.origin;
-      var direction = Quaternion.Euler(Random.Range(-2.0f, 2.0f), Random.Range(-2.0f, 2.0f), Random.Range(-2.0f, 2.0f)) * m_Muzzle.direction;
+      var direction = Quaternion.Euler(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)) * m_Muzzle.direction;
 
       m_Muzzle.Flash();
 
@@ -39,6 +41,8 @@ public class LaserGun : Weapon
           target.OnShot(Random.Range(1.0f, 2.0f));
         }
       }
+
+      m_ShootAudioSource.Play();
     }
   }
 

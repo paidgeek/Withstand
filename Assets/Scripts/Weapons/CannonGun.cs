@@ -3,6 +3,8 @@
 public class CannonGun : Weapon
 {
   [SerializeField] private CannonBall m_CannonBallPrefab;
+  [SerializeField]
+  private AudioSource m_FireAudioSource;
 
   private void Start()
   {
@@ -13,5 +15,6 @@ public class CannonGun : Weapon
   {
     m_Muzzle.Flash();
     m_CannonBallPrefab.Spawn(m_Muzzle.transform.position, m_Muzzle.transform.rotation);
+    m_FireAudioSource.Play();
   }
 }

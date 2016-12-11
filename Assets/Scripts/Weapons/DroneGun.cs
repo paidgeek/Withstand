@@ -3,6 +3,7 @@
 public class DroneGun : Weapon
 {
   [SerializeField] private DroneGunBullet m_BulletPrefab;
+  [SerializeField] private AudioSource m_FireAudioSource;
 
   private void Start()
   {
@@ -13,5 +14,6 @@ public class DroneGun : Weapon
   {
     m_Muzzle.Flash();
     m_BulletPrefab.Spawn(m_Muzzle.transform.position, m_Muzzle.transform.rotation);
+    m_FireAudioSource.Play();
   }
 }

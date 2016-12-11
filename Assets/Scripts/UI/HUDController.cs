@@ -6,6 +6,8 @@ public class HUDController : MonoBehaviour
   [SerializeField] private Text m_ScoreText;
   [SerializeField] private Image m_HealthFill;
   [SerializeField] private Image m_HurtOverlay;
+  [SerializeField] private Image m_ShieldFill;
+  private float m_ShieldTimer;
 
   public void OnEarnPixel()
   {
@@ -24,5 +26,20 @@ public class HUDController : MonoBehaviour
   {
     var cg = GetComponent<CanvasGroup>();
     cg.alpha = 0.0f;
+  }
+
+  private void Update()
+  {
+    if (m_ShieldTimer > 0.0f) {
+      m_ShieldFill.fillAmount = m_ShieldTimer / 5.0f;
+      m_ShieldTimer -= Time.deltaTime;
+    } else {
+      m_ShieldFill.fillAmount = 0.0f;
+    }
+  }
+
+  public void OnShieldEnable()
+  {
+    m_ShieldTimer = 10.0f;
   }
 }

@@ -23,10 +23,7 @@ public class Cannon : Enemy, ITarget
     Hurt();
 
     if (m_Health <= 0.0f) {
-      LootManager.SpawnPixels(transform.position);
-      if (Random.value < 0.1f) {
-        LootManager.SpawnHealthPack(transform.position);
-      }
+      LootManager.Spawn(transform.position);
 
       Instantiate(m_DeathEffect, transform.position, Quaternion.identity);
       Destroy(gameObject);

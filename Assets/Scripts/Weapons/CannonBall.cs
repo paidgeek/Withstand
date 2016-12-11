@@ -9,7 +9,7 @@ public class CannonBall : MonoBehaviour
   private void OnEnable()
   {
     m_Timer = 2.0f;
-    GetComponent<Rigidbody>().AddForce(transform.forward * 1.3f, ForceMode.Impulse);
+    GetComponent<Rigidbody>().AddForce(transform.forward * 2.0f, ForceMode.Impulse);
   }
 
   private void OnCollisionEnter(Collision collision)
@@ -25,7 +25,9 @@ public class CannonBall : MonoBehaviour
     if (m_Timer <= 0.0f) {
       Explode();
     } else {
-      m_Light.intensity = Mathf.Pow(2.0f - m_Timer, 2.0f);
+      var x = m_Timer / 2.0f;
+      x *= x;
+      m_Light.intensity = (Mathf.Sin(1.0f / x) + 1.0f);
     }
   }
 
