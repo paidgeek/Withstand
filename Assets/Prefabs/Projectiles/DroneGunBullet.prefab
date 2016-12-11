@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4822267763898198}
   - component: {fileID: 108801440986431308}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4089634241389786}
   - component: {fileID: 114505856285434282}
   - component: {fileID: 120020746778329436}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: DroneGunBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

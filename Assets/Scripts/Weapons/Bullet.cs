@@ -4,7 +4,6 @@ public abstract class Bullet : MonoBehaviour
 {
   private static readonly float s_Speed = 70.0f;
   [SerializeField] private LayerMask m_HitLayer;
-  public Weapon weapon { get; set; }
 
   private void Update()
   {

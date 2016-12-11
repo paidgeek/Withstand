@@ -1,4 +1,4 @@
 ﻿public interface ITarget
 {
-  void OnShot(Weapon weapon);
+  void OnShot(float damage);
 }

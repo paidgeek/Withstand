@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
 
-public class Drone : Enemy, ITarget
+public class Cannon : Enemy, ITarget
 {
   private static readonly float s_RotationSpeed = 9.0f;
   private static readonly float s_MoveSpeed = 100.0f;
-  [SerializeField] private float m_HoverHeight;
-  [SerializeField] private float m_HoverForce;
+  [SerializeField]
+  private float m_HoverHeight;
+  [SerializeField]
+  private float m_HoverForce;
   private Gravity m_Gravity;
   private Rigidbody m_Rigidbody;
   private Quaternion m_TargetRotation;
   private float m_Health;
-  [SerializeField] private DroneGun m_Gun;
+  [SerializeField]
+  private CannonGun m_Gun;
   private float m_GunTimer;
-  [SerializeField] private Transform m_Pivot;
   private Vector3 m_MoveDirection;
 
   public void OnShot(float damage)
@@ -54,13 +56,10 @@ public class Drone : Enemy, ITarget
 
       if (d.sqrMagnitude < 300.0f) {
         var t = player.transform.position + player.rigidbody.velocity * 0.03f - m_Gun.muzzle.transform.position;
-        m_Pivot.localRotation = Quaternion.LookRotation(t.normalized, -m_Gravity.direction);
 
         if (d.sqrMagnitude < 250.0f) {
           Fire();
         }
-      } else {
-        m_Pivot.localRotation = Quaternion.LookRotation(m_MoveDirection, -m_Gravity.direction);
       }
 
       if (Vector3.Distance(player.transform.position, transform.position) < 20.0f) {
@@ -73,7 +72,8 @@ public class Drone : Enemy, ITarget
   {
     m_GunTimer -= Time.deltaTime;
     if (m_GunTimer <= 0.0f) {
-      m_GunTimer = 0.5f;
+      m_GunTimer = 2.0f;
+      m_Gun.transform.LookAt(Player.instance.transform.position);
       m_Gun.Fire();
     }
   }
@@ -92,4 +92,5 @@ public class Drone : Enemy, ITarget
       m_Rigidbody.AddForce(m_Gravity.direction * m_Gravity.multiplier * Time.fixedDeltaTime, ForceMode.Impulse);
     }
   }
+
 }

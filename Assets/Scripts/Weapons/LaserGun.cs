@@ -36,7 +36,7 @@ public class LaserGun : Weapon
 
         var target = hit.collider.GetComponent<ITarget>();
         if (target != null) {
-          target.OnShot(this);
+          target.OnShot(Random.Range(1.0f, 2.0f));
         }
       }
     }

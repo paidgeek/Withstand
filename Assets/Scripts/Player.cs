@@ -5,21 +5,26 @@ public class Player : Singleton<Player>, ITarget
 {
   [SerializeField] private Camera m_Camera;
   [SerializeField] private UnityEvent m_OnHealthChange;
+  [SerializeField] private Shake m_Shake;
   private float m_RegenerationTimer;
   public static float health { get; private set; }
   public static float maxHealth { get; private set; }
   public Rigidbody rigidbody { get; private set; }
   public Gravity gravity { get; private set; }
 
-  public void OnShot(Weapon weapon)
+  public void OnShot(float damage)
   {
-    health -= Random.Range(1.0f, 2.0f);
+    health -= damage;
     m_RegenerationTimer = 5.0f;
 
     if (health <= 0.0f) {
       Die();
     } else if (m_OnHealthChange != null) {
       m_OnHealthChange.Invoke();
+    }
+
+    if (m_Shake) {
+      m_Shake.Push(damage * 0.1f);
     }
   }
 

@@ -3,6 +3,7 @@
 public abstract class Enemy : MonoBehaviour
 {
   [SerializeField] private Renderer[] m_Renderers;
+  [SerializeField] protected Transform m_DeathEffect;
   private float m_HurtTimer;
 
   protected void Hurt()

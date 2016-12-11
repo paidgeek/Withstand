@@ -12,8 +12,6 @@ public class DroneGun : Weapon
   public override void Fire()
   {
     m_Muzzle.Flash();
-
-    var bullet = m_BulletPrefab.Spawn(m_Muzzle.transform.position, m_Muzzle.transform.rotation);
-    bullet.weapon = this;
+    m_BulletPrefab.Spawn(m_Muzzle.transform.position, m_Muzzle.transform.rotation);
   }
 }

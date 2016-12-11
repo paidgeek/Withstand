@@ -13,7 +13,7 @@ public class DroneGunBullet : Bullet
   {
     var target = hit.collider.GetComponent<ITarget>();
     if (target != null) {
-      target.OnShot(weapon);
+      target.OnShot(Random.Range(1.0f, 2.0f));
     }
 
     m_ImpactPrefab.Spawn(hit.point + hit.normal * 0.1f);

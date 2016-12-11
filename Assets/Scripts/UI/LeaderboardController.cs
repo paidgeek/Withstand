@@ -6,7 +6,13 @@ public class LeaderboardController : Singleton<LeaderboardController>
   [SerializeField] private PlayerScore m_PlayerScorePrefab;
   [SerializeField] private RectTransform m_Content;
 
-  private void OnEnable()
+  public void OnBackClick()
+  {
+    MenuController.Show();
+    Hide();
+  }
+
+  private void LoadScores()
   {
     for (var i = 0; i < m_Content.childCount; i++) {
       Destroy(m_Content.GetChild(i).gameObject);
@@ -26,21 +32,19 @@ public class LeaderboardController : Singleton<LeaderboardController>
     });
   }
 
-  public void OnBackClick()
-  {
-    MenuController.Show();
-    Hide();
-  }
-
   public static void Show()
   {
+    instance.LoadScores();
+
     var cg = instance.GetComponent<CanvasGroup>();
     var rt = instance.GetComponent<RectTransform>();
 
-    TweenFactory.Tween("ShowLeaderboard", 0.0f, 1.0f, 0.5f, TweenScaleFunctions.CubicEaseInOut, t => {
+    TweenFactory.Tween("ShowLeaderboard", 0.0f, 1.0f, 0.5f, TweenScaleFunctions.CubicEaseInOut, t =>
+    {
       cg.alpha = t.CurrentValue;
       rt.anchoredPosition = Vector2.Lerp(new Vector2(2000.0f, 0.0f), Vector2.zero, t.CurrentValue);
-    }, t => {
+    }, t =>
+    {
       cg.interactable = true;
       cg.blocksRaycasts = true;
     });
@@ -53,9 +57,10 @@ public class LeaderboardController : Singleton<LeaderboardController>
     cg.interactable = false;
     cg.blocksRaycasts = false;
 
-    TweenFactory.Tween("HideLeaderboard", 1.0f, 0.0f, 0.5f, TweenScaleFunctions.CubicEaseInOut, t => {
+    TweenFactory.Tween("HideLeaderboard", 1.0f, 0.0f, 0.5f, TweenScaleFunctions.CubicEaseInOut, t =>
+    {
       cg.alpha = t.CurrentValue;
       rt.anchoredPosition = Vector2.Lerp(new Vector2(2000.0f, 0.0f), Vector2.zero, t.CurrentValue);
-    }, t => { });
+    }, t => {});
   }
 }
