@@ -1,6 +1,6 @@
 # Withstand
 
-A game made in 48h for [Ludum Dare](). Cloud source: [withstandleaderboard](https://github.com/paidgeek/withstandleaderboard).
+A game made in 48 hours for [Ludum Dare](http://ludumdare.com/compo/ludum-dare-37/?action=preview&uid=10029). Cloud source: [withstandleaderboard](https://github.com/paidgeek/withstandleaderboard).
 
 Withstand a drone uprising. Use your laser gun to kill everything you see.
 
