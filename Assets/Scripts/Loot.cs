@@ -10,6 +10,10 @@ public abstract class Loot : MonoBehaviour
   {
     m_Rigidbody = GetComponent<Rigidbody>();
     m_Player = Player.instance.transform;
+  }
+
+  private void OnEnable()
+  {
     m_LifeTimer = 20.0f;
   }
 
