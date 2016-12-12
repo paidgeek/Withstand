@@ -21,6 +21,11 @@ public class MenuController : Singleton<MenuController>
     Hide();
   }
 
+  private void Start()
+  {
+    AudioListener.volume = PlayerPrefs.GetFloat("SoundVolume", 1.0f);
+  }
+
   public static void Show()
   {
     var cg = instance.GetComponent<CanvasGroup>();
