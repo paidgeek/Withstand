@@ -4,7 +4,7 @@ A game made in 48 hours for [Ludum Dare](http://ludumdare.com/compo/ludum-dare-3
 
 Withstand a drone uprising. Use your laser gun to kill everything you see.
 
-## NOTE
+## Note
 - Pick up "pixels" to gain points
 - Pick up health packs to heal yourself
 - A shield makes you temporary invincible
