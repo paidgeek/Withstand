@@ -23,6 +23,7 @@ public class Gravity : MonoBehaviour
   private void Start()
   {
     m_LastSwitchPosition = Vector3.one * 1000.0f;
+    direction = Vector3.down;
   }
 
   private void Update()

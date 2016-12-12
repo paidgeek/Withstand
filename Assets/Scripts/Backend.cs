@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
@@ -22,6 +21,7 @@ public class BackendPlayer
 public class Backend : Singleton<Backend>
 {
   private static readonly string s_Url = "https://withstandleaderboard.appspot.com/scores";
+  //private static readonly string s_Url = "http://localhost:8080/scores";
 
   public static void PostScore(string name, string password, int score, UnityAction<string> callback)
   {
@@ -40,7 +40,7 @@ public class Backend : Singleton<Backend>
 
   private IEnumerator PostScoreCoroutine(string name, string password, int score, UnityAction<string> callback)
   {
-    var url = string.Format("/{0}/{1}/{2}", Utility.ToBase64(name), Utility.ToBase64(password), score);
+    var url = string.Format("{0}/{1}/{2}/{3}", s_Url, Utility.ToBase64(name), Utility.ToBase64(password), score);
     var www = UnityWebRequest.Post(url, "42");
     www.SetRequestHeader("Content-Type", "application/json");
     www.SetRequestHeader("Cache-Control", "max-age=0, no-cache, no-store");
@@ -51,8 +51,12 @@ public class Backend : Singleton<Backend>
       Debug.LogError(www.error);
       callback.Invoke("");
     } else {
-      var result = JsonUtility.FromJson<EmptyResult>(www.downloadHandler.text);
-      callback.Invoke(result.error);
+      if (www.downloadHandler.text == "null") {
+        callback.Invoke("");
+      } else {
+        var result = JsonUtility.FromJson<EmptyResult>(www.downloadHandler.text);
+        callback.Invoke(result.error);
+      }
     }
   }
 

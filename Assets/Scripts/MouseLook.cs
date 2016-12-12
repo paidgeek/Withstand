@@ -12,6 +12,8 @@ public class MouseLook : MonoBehaviour
     m_OriginalRotation = transform.localRotation;
     Cursor.lockState = CursorLockMode.Locked;
     Cursor.visible = false;
+
+    m_RotationSpeed *= PlayerPrefs.GetFloat("MouseSensitivity", 1.0f);
   }
 
   private void Update()

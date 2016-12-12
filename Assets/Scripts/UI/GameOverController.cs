@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class GameOverController : MonoBehaviour
 {
+  [SerializeField] private GameObject m_ZeroScore;
+  [SerializeField] private GameObject m_SomeScore;
   [SerializeField] private Text m_ScoreText;
   [SerializeField] private InputField m_NameField;
   [SerializeField] private InputField m_PasswordField;
@@ -11,7 +13,12 @@ public class GameOverController : MonoBehaviour
 
   public void OnGameOver()
   {
-    m_ScoreText.text = GameController.score.ToString("N0");
+    if (GameController.score == 0) {
+      m_ZeroScore.SetActive(true);
+    } else {
+      m_SomeScore.SetActive(true);
+      m_ScoreText.text = GameController.score.ToString("N0");
+    }
 
     var cg = GetComponent<CanvasGroup>();
     cg.alpha = 1.0f;

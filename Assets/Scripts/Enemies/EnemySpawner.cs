@@ -4,9 +4,11 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
   [SerializeField] private Transform[] m_EnemyPrefabs;
+  private float m_Rate;
 
   private void Start()
   {
+    m_Rate = 8.0f;
     StartCoroutine(SpawnerCoroutine());
   }
 
@@ -17,9 +19,12 @@ public class EnemySpawner : MonoBehaviour
 
   private IEnumerator SpawnerCoroutine()
   {
+    yield return new WaitForSeconds(2.0f);
+
     while (true) {
-      yield return new WaitForSeconds(5.0f);
+      m_Rate = Mathf.Clamp(m_Rate - 0.1f, 5.0f, 8.0f);
       Spawn();
+      yield return new WaitForSeconds(m_Rate);
     }
   }
 

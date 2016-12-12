@@ -50,4 +50,16 @@ public static class Utility
 
     return Encoding.UTF8.GetString(Convert.FromBase64String(encoded));
   }
+
+  public static Quaternion Normalize(this Quaternion q)
+  {
+    var len = Mathf.Sqrt(q.x * q.x + q.y * q.y + q.z * q.z + q.w* q.w);
+    if (len != 0.0f) {
+      q.x /= len;
+      q.y /= len;
+      q.z /= len;
+      q.w /= len;
+    }
+    return q;
+  }
 }

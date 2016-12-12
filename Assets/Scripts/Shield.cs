@@ -5,4 +5,9 @@
     this.Recycle();
     Player.PickupShield();
   }
+
+  protected override void OnTimeout()
+  {
+    this.Recycle();
+  }
 }

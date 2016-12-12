@@ -5,4 +5,9 @@
     this.Recycle();
     Player.PickupPixel();
   }
+
+  protected override void OnTimeout()
+  {
+    this.Recycle();
+  }
 }

@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
   [SerializeField] private LaserGun m_LaserGun;
   private Vector2 m_InputDirection;
   [SerializeField] private Transform m_View;
+  [SerializeField] private AudioSource m_JumpAudioSource;
 
   private void Start()
   {
@@ -16,6 +17,7 @@ public class PlayerInput : MonoBehaviour
   private void Update()
   {
     if (Input.GetButtonDown("Jump")) {
+      m_JumpAudioSource.Play();
       m_GravityCharacterController.Jump();
     }
 

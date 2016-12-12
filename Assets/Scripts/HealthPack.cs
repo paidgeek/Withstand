@@ -5,4 +5,9 @@
     this.Recycle();
     Player.PickupHealthPack();
   }
+
+  protected override void OnTimeout()
+  {
+    this.Recycle();
+  }
 }

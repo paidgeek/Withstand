@@ -4,11 +4,13 @@ public abstract class Loot : MonoBehaviour
 {
   private Rigidbody m_Rigidbody;
   private Transform m_Player;
+  private float m_LifeTimer;
 
   private void Start()
   {
     m_Rigidbody = GetComponent<Rigidbody>();
     m_Player = Player.instance.transform;
+    m_LifeTimer = 20.0f;
   }
 
   private void Update()
@@ -25,7 +27,13 @@ public abstract class Loot : MonoBehaviour
         m_Rigidbody.isKinematic = false;
       }
     }
+
+    m_LifeTimer -= Time.deltaTime;
+    if (m_LifeTimer <= 0.0f) {
+      OnTimeout();
+    }
   }
 
   protected abstract void OnPickup();
+  protected abstract void OnTimeout();
 }

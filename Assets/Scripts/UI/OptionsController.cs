@@ -7,6 +7,7 @@ public class OptionsController : Singleton<OptionsController>
   [SerializeField] private Slider m_SoundSlider;
   [SerializeField] private Slider m_FovSlider;
   [SerializeField] private Text m_FovText;
+  [SerializeField] private Slider m_MouseSensitivity;
 
   public void OnBackClick()
   {
@@ -19,6 +20,7 @@ public class OptionsController : Singleton<OptionsController>
     instance.m_SoundSlider.value = PlayerPrefs.GetFloat("SoundVolume", 1.0f);
     instance.m_FovSlider.value = PlayerPrefs.GetInt("Fov", 70);
     instance.m_FovText.text = PlayerPrefs.GetInt("Fov", 70).ToString();
+    instance.m_MouseSensitivity.value = PlayerPrefs.GetFloat("MouseSensitivity", 1.0f);
 
     var cg = instance.GetComponent<CanvasGroup>();
     var rt = instance.GetComponent<RectTransform>();
@@ -60,5 +62,12 @@ public class OptionsController : Singleton<OptionsController>
     PlayerPrefs.SetInt("Fov", value);
     PlayerPrefs.Save();
     instance.m_FovText.text = value.ToString();
+  }
+
+  public void OnMouseSensitivityChange()
+  {
+    var value = m_MouseSensitivity.value;
+    PlayerPrefs.SetFloat("MouseSensitivity", value);
+    PlayerPrefs.Save();
   }
 }

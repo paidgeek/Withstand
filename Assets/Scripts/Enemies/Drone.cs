@@ -2,13 +2,11 @@
 
 public class Drone : Enemy, ITarget
 {
-  private static readonly float s_RotationSpeed = 9.0f;
   private static readonly float s_MoveSpeed = 100.0f;
   [SerializeField] private float m_HoverHeight;
   [SerializeField] private float m_HoverForce;
   private Gravity m_Gravity;
   private Rigidbody m_Rigidbody;
-  private Quaternion m_TargetRotation;
   private float m_Health;
   [SerializeField] private DroneGun m_Gun;
   private float m_GunTimer;
@@ -60,7 +58,7 @@ public class Drone : Enemy, ITarget
         m_Pivot.localRotation = Quaternion.LookRotation(m_MoveDirection, -m_Gravity.direction);
       }
 
-      if (Vector3.Distance(player.transform.position, transform.position) < 20.0f) {
+      if (Vector3.Distance(player.transform.position, transform.position) < 30.0f) {
         m_MoveDirection = Vector3.ProjectOnPlane((player.transform.position - transform.position).normalized, -m_Gravity.direction).normalized;
       }
     }
@@ -77,9 +75,6 @@ public class Drone : Enemy, ITarget
 
   private void FixedUpdate()
   {
-    m_TargetRotation = Quaternion.FromToRotation(m_TargetRotation * Vector3.up, -m_Gravity.direction) * m_TargetRotation;
-    transform.rotation = Quaternion.Slerp(transform.rotation, m_TargetRotation, s_RotationSpeed * Time.fixedDeltaTime);
-
     m_Rigidbody.AddForce(m_MoveDirection * s_MoveSpeed * Time.fixedDeltaTime, ForceMode.Acceleration);
 
     if (m_Gravity.altitude < m_HoverHeight) {

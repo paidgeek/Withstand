@@ -31,7 +31,7 @@ public class HUDController : MonoBehaviour
   private void Update()
   {
     if (m_ShieldTimer > 0.0f) {
-      m_ShieldFill.fillAmount = m_ShieldTimer / 5.0f;
+      m_ShieldFill.fillAmount = m_ShieldTimer / 10.0f;
       m_ShieldTimer -= Time.deltaTime;
     } else {
       m_ShieldFill.fillAmount = 0.0f;

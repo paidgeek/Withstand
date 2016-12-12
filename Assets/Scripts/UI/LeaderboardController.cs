@@ -5,6 +5,8 @@ public class LeaderboardController : Singleton<LeaderboardController>
 {
   [SerializeField] private PlayerScore m_PlayerScorePrefab;
   [SerializeField] private RectTransform m_Content;
+  [SerializeField] private GameObject m_SuccessPanel;
+  [SerializeField] private GameObject m_FailPanel;
 
   public void OnBackClick()
   {
@@ -20,13 +22,18 @@ public class LeaderboardController : Singleton<LeaderboardController>
 
     Backend.GetScores(scores =>
     {
-      if (scores == null || scores.Count == 0) {} else {
+      if (scores == null || scores.Count == 0) {
+        m_FailPanel.SetActive(true);
+      } else {
+        m_SuccessPanel.SetActive(true);
         for (var i = 0; i < scores.Count; i++) {
           var s = scores[i];
           var playerScore = Instantiate(m_PlayerScorePrefab, m_Content);
           playerScore.order = i + 1;
           playerScore.playerName = s.name;
           playerScore.score = s.score;
+
+          Debug.Log(s.name);
         }
       }
     });
