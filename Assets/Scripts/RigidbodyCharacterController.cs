@@ -46,11 +46,13 @@ public class RigidbodyCharacterController : MonoBehaviour
     m_TargetRotation = transform.rotation;
   }
 
-  public void Jump()
+  public bool Jump()
   {
-    if (!m_Jump) {
+    if (!m_Jumping) {
       m_Jump = true;
+      return true;
     }
+    return false;
   }
 
   public void Move(Vector2 direction)
@@ -86,6 +88,7 @@ public class RigidbodyCharacterController : MonoBehaviour
         m_Rigidbody.drag = 0.0f;
         m_Rigidbody.AddForce(-m_Gravity.direction * m_JumpPower * 50.0f, ForceMode.Impulse);
         m_Jumping = true;
+        m_Jump = false;
       }
 
       if (!m_Jumping && Mathf.Abs(m_InputDirection.x) < float.Epsilon && Mathf.Abs(m_InputDirection.y) < float.Epsilon && m_Rigidbody.velocity.magnitude < 1.0f) {
@@ -99,7 +102,6 @@ public class RigidbodyCharacterController : MonoBehaviour
       }
     }
 
-    m_Jump = false;
     m_InputDirection = Vector2.zero;
   }
 

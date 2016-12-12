@@ -17,8 +17,9 @@ public class PlayerInput : MonoBehaviour
   private void Update()
   {
     if (Input.GetButtonDown("Jump")) {
-      m_JumpAudioSource.Play();
-      m_GravityCharacterController.Jump();
+      if (m_GravityCharacterController.Jump()) {
+        m_JumpAudioSource.Play();
+      }
     }
 
 #if !UNITY_EDITOR
