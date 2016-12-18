@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     yield return new WaitForSeconds(2.0f);
 
     while (true) {
-      m_Rate = Mathf.Clamp(m_Rate - 0.1f, 5.0f, 8.0f);
+      m_Rate = Mathf.Clamp(m_Rate - 0.06f, 3.0f, 8.0f);
       Spawn();
       yield return new WaitForSeconds(m_Rate);
     }
