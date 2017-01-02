@@ -8,7 +8,7 @@ Withstand a drone uprising. Use your laser gun to kill everything you see.
 - Pick up "pixels" to gain points
 - Pick up health packs to heal yourself
 - A shield makes you temporary invincible
-- Optionally, post your score to a global leaderboard to brag
+- Optionally, post your score to a global leaderboard for bragging purposes
 
 ## Play
 - [Windows](https://github.com/paidgeek/Withstand/blob/master/Compo/Windows/Withstand.zip?raw=true)
